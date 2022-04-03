@@ -10,7 +10,7 @@ Our implementations are based on the [codebase](https://github.com/KaihuaTang/Sc
 	<img src="assets/Figure1.png" width="500">
 
 ## 2. Environment Setup
-The environment setup requirements are in general the same as [Scene-Graph-Benchmark](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch/blob/master/INSTALL.md) and [Maskrcnn-Benchmark](https://github.com/facebookresearch/maskrcnn-benchmark). Please follow the installation guidance.
+The environment setup requirements are in general the same as [Scene-Graph-Benchmark](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch/blob/master/INSTALL.md) and [Maskrcnn-Benchmark](https://github.com/facebookresearch/maskrcnn-benchmark). Please follow their installation guidance.
 
 ## 3. Data Preparation
 In this work, we explore the SGG task with insufficient visual input. Therefore, instead of using the original images, we first pre-processing the VG dataset to obtain three levels of vision missingness: the object-level obfuscations, the image-level obfuscations, and the sementic masked images. After finishing the preprocessing of the dataset, you can modify the data path at ```./maskrcnn_benchmark/config/paths_catalog.py```.
@@ -46,7 +46,7 @@ MODEL.ROI_RELATION_HEAD.USE_GT_BOX False MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_L
 Examples of training command are given as follows:
 
 ```
-CUDA_VISIBLE_DEVICES=0,1,2 python -m torch.distributed.launch --master_port 10025 --nproc_per_node=2 tools/relation_train_net.py --config-file "configs/e2e_relation_X_101_32_8_FPN_1x.yaml" MODEL.ROI_RELATION_HEAD.USE_GT_BOX True MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL True MODEL.ROI_RELATION_HEAD.PREDICTOR MotifPredictor SOLVER.IMS_PER_BATCH 12 TEST.IMS_PER_BATCH 2 DTYPE "float16" SOLVER.MAX_ITER 50000 SOLVER.VAL_PERIOD 2000 SOLVER.CHECKPOINT_PERIOD 2000 GLOVE_DIR /home/kaihua/glove MODEL.PRETRAINED_DETECTOR_CKPT /data/sgg/checkpoints/pretrained_faster_rcnn/model_final.pth OUTPUT_DIR /data/sgg/checkpoints/motif-precls-exmp
+CUDA_VISIBLE_DEVICES=0,1,2 python -m torch.distributed.launch --master_port 10025 --nproc_per_node=2 tools/relation_train_net.py --config-file "configs/e2e_relation_X_101_32_8_FPN_1x.yaml" MODEL.ROI_RELATION_HEAD.USE_GT_BOX True MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL True MODEL.ROI_RELATION_HEAD.PREDICTOR MotifPredictor SOLVER.IMS_PER_BATCH 12 TEST.IMS_PER_BATCH 2 DTYPE "float16" SOLVER.MAX_ITER 50000 SOLVER.VAL_PERIOD 2000 SOLVER.CHECKPOINT_PERIOD 2000 GLOVE_DIR /home/SI-Dial/glove MODEL.PRETRAINED_DETECTOR_CKPT /data/sgg/checkpoints/pretrained_faster_rcnn/model_final.pth OUTPUT_DIR /data/sgg/checkpoints/motif-precls-exmp
 ```
 
 ## 6. Evaluation
@@ -54,8 +54,10 @@ CUDA_VISIBLE_DEVICES=0,1,2 python -m torch.distributed.launch --master_port 1002
 Examples of test command are as follows:
 
 ```
-CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --master_port 10027 --nproc_per_node=1 tools/relation_test_net.py --config-file "configs/e2e_relation_X_101_32_8_FPN_1x.yaml" MODEL.ROI_RELATION_HEAD.USE_GT_BOX True MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL True MODEL.ROI_RELATION_HEAD.PREDICTOR MotifPredictor TEST.IMS_PER_BATCH 1 DTYPE "float16" GLOVE_DIR /home/kaihua/glove MODEL.PRETRAINED_DETECTOR_CKPT /data/sgg/checkpoints/motif-precls-exmp OUTPUT_DIR /data/sgg/checkpoints/motif-precls-exmp
+CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --master_port 10027 --nproc_per_node=1 tools/relation_test_net.py --config-file "configs/e2e_relation_X_101_32_8_FPN_1x.yaml" MODEL.ROI_RELATION_HEAD.USE_GT_BOX True MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL True MODEL.ROI_RELATION_HEAD.PREDICTOR MotifPredictor TEST.IMS_PER_BATCH 1 DTYPE "float16" GLOVE_DIR /home/SI-Dial/glove MODEL.PRETRAINED_DETECTOR_CKPT /data/sgg/checkpoints/motif-precls-exmp OUTPUT_DIR /data/sgg/checkpoints/motif-precls-exmp
 ```
+
+The provided codebase automatically calculates various evaluation metrics, please read carefully the [metrics evaluation](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch/blob/master/METRICS.md).
 
 ## 7. Citation
 Please consider citing our paper if you find it useful or interesting.
