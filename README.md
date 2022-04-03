@@ -4,7 +4,7 @@ This is the Pytorch implementation for the paper [Supplementing Missing Visions 
 ## 1. Project Overview
 In this work, we aim to explore the Scene Graph Generation (SGG) task under the setting of insufficient visual input, and propose to supplement the missing visions via dialog.
 
-Our implementations are based on the [codebase](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch), we want to thank the original authors for sharing their code. 
+Our implementations are based on this [codebase](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch), we want to thank the original authors for sharing their code. 
 
 <p align="center">
 	<img src="assets/Figure1.png" width="500">
