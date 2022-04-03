@@ -7,7 +7,7 @@ In this work, we aim to explore the Scene Graph Generation (SGG) task under the 
 Our implementations are based on the [codebase](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch), we want to thank the original authors for sharing their code. 
 
 <p align="center">
-	<img src="assets/Figure1.png" width="700">
+	<img src="assets/Figure1.png" width="500">
 
 ## 2. Environment Setup
 The environment setup requirements are in general the same as [Scene-Graph-Benchmark](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch/blob/master/INSTALL.md) and [Maskrcnn-Benchmark](https://github.com/facebookresearch/maskrcnn-benchmark). Please follow the installation guidance.
