@@ -1,5 +1,5 @@
 # SI-Dial
-This is the Pytorch implementation for the paper [Supplementing Missing Visions via Dialog for Scene Graph Generations]().
+This is the Pytorch implementation for the paper [Supplementing Missing Visions via Dialog for Scene Graph Generations](https://arxiv.org/abs/2204.11143).
 
 ## 1. Project Overview
 In this work, we aim to explore the Scene Graph Generation (SGG) task under the setting of insufficient visual input, and propose to supplement the missing visions via dialog.
@@ -62,6 +62,12 @@ The provided codebase automatically calculates various evaluation metrics, pleas
 ## 7. Citation
 Please consider citing our paper if you find it useful or interesting.
 ```
+@article{yezhu2022supplementing,
+  title={Supplementing Missing Visions via Dialog for Scene Graph Generations},
+  author={Zhu, Ye and Zhu, Xiaoguang and Shang, Yuzhang and Zhao, Zhenghao and Yan, Yan},
+  journal={arXiv preprint arXiv:2204.11143},
+  year={2022}
+}
 ```
 
 
